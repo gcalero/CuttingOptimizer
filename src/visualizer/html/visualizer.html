@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+Enter a JSON with this format and press Process button to visualize the result
+<input id="json" type="text" style="width:90%;" value='[{"width":1500.0, "height":1000.0, "panels":[{"x1":0.0, "y1":0.0,"x2":1000.0, "y2":500.0,"free":false},{"x1":1000.0,"y1":0.0, "x2": 1500.0, "y2":1000.0, "free":false},{"x1":0.0, "y1":500.0,"x2":1000.0,"y2":1000.0,"free":true}]}]'></input>
+<button type="button" onclick="draw()">Process</button>
+<div id="sheetsContainer"></div>
+<script>
+function draw() {
+var sheets = JSON.parse(document.getElementById("json").value);
+  sheets.forEach(function(s, index) {
+    var sheet = document.createElement('div');
+    var sheetId = 'sheet-'+index;
+    sheet.id = sheetId;
+    sheet.width=s.width;
+    sheet.height=s.height;
+    sheet.style.width=s.width+"px";
+    sheet.style.height=s.height+"px";
+    sheet.style.position="relative";
+    sheet.style.border="1px solid #0000ff";
+   
+    var container = document.getElementById("sheetsContainer");
+	while (container.firstChild) {
+      myNode.removeChild(container.firstChild);
+    }
+    container.appendChild(sheet); // adds the div to #sheetsContainer
+
+    s.panels.forEach(function(p) {
+      var left = p.x1;
+      var top = p.y1;
+      var width = p.x2 - p.x1;
+      var height = p.y2 - p.y1;
+      var panel = document.createElement('div');
+      panel.style.left = left+"px";
+      panel.style.top = top+"px";
+      panel.style.width = width+"px";
+      panel.style.height = height+"px";
+      panel.style.border="1px solid #00ff00";
+      panel.style.position="absolute";
+      panel.innerHTML = width + "x" + height;
+      sheet.appendChild(panel);
+      if (p.free) {
+        panel.style.color="green";
+        panel.style.background="#f0f0f0";
+      } else {
+        panel.style.color="blue";
+        panel.style.background="#ffa0a0";
+      }
+    });
+  });
+
+
+
+}
+</script>
+
+</body>
+</html>
+
