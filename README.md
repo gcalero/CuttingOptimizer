@@ -1,6 +1,6 @@
-#Cutting optimizer
+# Cutting optimizer
 
-##Description
+## Description
 
 It is a tool to optimize the distribution of pieces on one or more 2D fixed size sheets. This optimizer takes as input
 
@@ -13,7 +13,7 @@ and produces as output
 . A list of pieces that the optimizer could not arrange because it is bigger than the sheet size
 
 
-##TODO:
+## TODO:
 . Write more and deeper test cases (with more peaces, improve assertions)
 . Algorithm improvement: evaluate all paths (http://www.intechopen.com/books/greedy_algorithms/a_greedy_algorithm_with_forward-looking_strategy)
 . Build a CLI (or REST API?) so others can build graphic and/or web tools to load and visualize results
