@@ -21,4 +21,8 @@ and produces as output
 * Tag pieces at input
 * Add cutting thickness to settings
 
+## Visualizer:
+
+In src/visualizer/html you will find an html file to see results visually. Use CuttingResult.printResult() instance method to get a results in json format and then, paste it into the html's input box and press the button.
+
 
